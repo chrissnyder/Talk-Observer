@@ -1,7 +1,58 @@
 [{
-  "id": 1,
-  "name": "galaxy_zoo"
+  "name": "asteroid", 
+  "url": "talk.asteroidzoo.org"
 }, {
-  "id": 2,
-  "name": "planet_four"
+  "name": "chicago", 
+  "url": "talk.chicagowildlifewatch.org"
+}, {
+  "name": "condor", 
+  "url": "talk.condorwatch.org"
+}, {
+  "name": "cyclone_center", 
+  "url": "talk.cyclonecenter.org"
+}, {
+  "name": "galaxy_zoo", 
+  "url": "talk.galaxyzoo.org"
+}, {
+  "name": "kelp", 
+  "url": "talk.floatingforest.org"
+}, {
+  "name": "milky_way",
+  "url": "talk.milkywayproject.org"
+}, {
+  "name": "notes_from_nature",
+  "url": "talk.notesfromnature.org"
+}, {
+  "name": "penguin", 
+  "url": "talk.penguinwatch.org"
+}, {
+  "name": "planet_hunter",
+  "url": "talk.planethunters.org"
+}, {
+  "name": "planet_four",
+  "url": "talk.planetfour.org"
+}, {
+  "name": "plankton", 
+  "url": "talk.planktonportal.org"
+}, {
+  "name": "radio", 
+  "url": "radiotalk.galaxyzoo.org"
+}, {
+  "name": "serengeti",
+  "url": "talk.snapshotserengeti.org"
+}, {
+  "name": "spacewarp", 
+  "url": "talk.spacewarps.org"
+}, {
+  "name": "sunspot", 
+  "url": "talk.sunspotter.org"
+}, {
+  "name": "war_diary", 
+  "url": "talk.operationwardiary.org"
+}, {
+  "name": "wise", 
+  "url": "talk.diskdetective.org"
+}, {
+  "name": "worms",
+  "url": "talk.wormwatchlab.org"
 }]

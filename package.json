@@ -2,7 +2,8 @@
   "name": "Talk-Extras-React",
   "version": "1.0.0",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "deploy-to-staging": "gulp build-for-deploy && publisssh ./public/build zooniverse-static/tools.zooniverse.org/talk"
   },
   "author": "Zooniverse",
   "browserify": {
@@ -22,9 +23,11 @@
     "coffeeify": "^0.7.0",
     "gulp": "^3.8.8",
     "gulp-browserify": "^0.5.0",
+    "gulp-buffer": "0.0.2",
     "gulp-changed": "^1.0.0",
     "gulp-notify": "^1.8.0",
     "gulp-rename": "^1.2.0",
+    "gulp-rev": "^1.1.0",
     "gulp-rimraf": "^0.1.0",
     "gulp-stylus": "^1.3.3",
     "gulp-util": "^3.0.1",
@@ -38,6 +41,7 @@
   "dependencies": {
     "react": "^0.11.2",
     "react-router": "^0.7.0",
-    "zooniverse": "^0.7.1"
+    "zooniverse": "^0.7.1",
+    "publisssh": "^0.2.6"
   }
 }
