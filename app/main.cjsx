@@ -2,6 +2,7 @@
 
 React = require 'react'
 { Routes, Route } = require 'react-router'
+_ = require 'underscore'
 
 Api = require 'zooniverse/lib/api'
 new Api
@@ -13,6 +14,7 @@ topBar.el.prependTo document.body
 User = require 'zooniverse/models/user'
 
 talkProjects = require './lib/talk-projects'
+talkProjectNames = _.pluck talkProjects, 'name'
 ProjectsList = require './components/projects-list'
 
 App = React.createClass
@@ -30,18 +32,13 @@ App = React.createClass
     User.fetch()
 
   _refreshProjects: ->
-    Api.current.get @_projectsListUrl(), (projects) =>
-      projects = projects.filter (project) ->
-        usesTalk = false
-        for talkProject in talkProjects
-          usesTalk = true if talkProject.name is project.name
-        return usesTalk
-
-      projects = projects.map (project) ->
-        for talkProject in talkProjects
-          if talkProject.name is project.name
-            project[key] = value for key, value of talkProject unless key of talkProject
-        project
+    Api.current.get @_projectsListUrl(), (rawProjects) =>
+      projects = _.chain rawProjects
+        .filter (rawProject) -> rawProject.name in talkProjectNames
+        .map (rawProject) ->
+          talkProject = _.find talkProjects, (talkProject) -> talkProject.name is rawProject.name
+          _.extend rawProject, talkProject
+        .value()
 
       @setState projects: projects
 
