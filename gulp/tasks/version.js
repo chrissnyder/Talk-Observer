@@ -4,14 +4,18 @@ var gulp = require('gulp');
 var rev = require('gulp-rev');
 
 gulp.task('version-assets', function() {
-  var oldAssets = fs.readdirSync('public/build/assets');
-  var filePath = null;
+  try {
+    var oldAssets = fs.readdirSync('public/build/assets');
+    var filePath = null;
 
-  for (var i = 0; i < oldAssets.length; i++) {
-    filePath = 'public/build/assets/' + oldAssets[i];
-    if (fs.statSync(filePath).isFile()) {
-      fs.unlinkSync(filePath);
+    for (var i = 0; i < oldAssets.length; i++) {
+      filePath = 'public/build/assets/' + oldAssets[i];
+      if (fs.statSync(filePath).isFile()) {
+        fs.unlinkSync(filePath);
+      }
     }
+  } catch(e) {
+    console.log('Unable to remove old assets. Maybe there are none?');
   }
 
   return gulp.src([
