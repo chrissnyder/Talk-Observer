@@ -1,3 +1,4 @@
 /node_modules/
 /public/build/
 rev-manifest.json
+npm-debug.log
