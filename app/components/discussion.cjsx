@@ -6,14 +6,13 @@ Discussion = React.createClass
   displayName: 'Discussion'
 
   getInitialState: ->
-    changed: @props.isNew || (@props.data.last_comment._id is localStorage.getItem @props.data.zooniverse_id)
+    modified: @props.modified
 
   componentWillReceiveProps: (nextProps) ->
-    @setState changed: nextProps.data.last_comment._id != @props.data.last_comment._id
+    @setState modified: nextProps.data.last_comment._id != @props.data.last_comment._id
 
   onClick: ->
-    localStorage.setItem @props.data.zooniverse_id, @props.data.last_comment._id
-    @setState changed: false
+    @setState modified: false
 
   _url: ->
     "http://#{ @props.project.url }/#/boards/#{ @props.data.board._id }/discussions/#{ @props.data.zooniverse_id }"
@@ -21,7 +20,7 @@ Discussion = React.createClass
   render: ->
     classes = classSet
       'discussion': true
-      'changed': @state.changed
+      'modified': @state.modified
 
     <div className={ classes } onClick={ @onClick }>
       <a href={ @_url() } target="_blank">{ @props.data.title }</a><br />
