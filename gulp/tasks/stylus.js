@@ -8,6 +8,9 @@ gulp.task('stylus', function() {
 
   return gulp.src('css/main.styl')
     .pipe(changed(dest))
-    .pipe(stylus({use: nib()}))
+    .pipe(stylus({
+      use: nib(),
+      'include css': true
+    }))
     .pipe(gulp.dest(dest));
 });

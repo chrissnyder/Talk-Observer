@@ -1,10 +1,14 @@
 # @cjsx React.DOM
 
 React = require 'react'
-{ Router, Routes, Route, Link } = require 'react-router'
+{ Routes, Route } = require 'react-router'
 
 Api = require 'zooniverse/lib/api'
 new Api
+
+TopBar = require 'zooniverse/controllers/top-bar'
+topBar = new TopBar
+topBar.el.prependTo document.body
 
 User = require 'zooniverse/models/user'
 
@@ -28,11 +32,10 @@ App = React.createClass
   _refreshProjects: ->
     Api.current.get @_projectsListUrl(), (projects) =>
       projects = projects.filter (project) ->
-        exists = false
+        usesTalk = false
         for talkProject in talkProjects
-          exists = true if talkProject.name is project.name
-
-        exists
+          usesTalk = true if talkProject.name is project.name
+        return usesTalk
 
       projects = projects.map (project) ->
         for talkProject in talkProjects
